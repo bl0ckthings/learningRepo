@@ -1,4 +1,6 @@
 
+// OOP scenario
+
 class Order {
     constructor(
         private readonly id: string,
