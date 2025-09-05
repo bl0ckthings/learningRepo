@@ -1,5 +1,5 @@
 // Make this file a module to avoid global scope conflicts
-export {};
+
 
 type PaymentType = "card" | "paypal" | "crypto" | "applepay";
 
@@ -257,14 +257,3 @@ const order: Order = {
   );
   processNewOrder.process(order);
 
-  // Example usage with explicit notification types
-  notificationService.sendNotification("email", "bob@example.com", "Hi Bob!");
-  notificationService.sendNotification("sms", "+1234567890", "Hi Bob!");
-  notificationService.sendNotification("email", "alice@example.com", "Hi Alice!");
-  notificationService.sendNotification("sms", "+9876543210", "Hi Alice!");
-  notificationService.sendNotification("email", "charlie@example.com", "Hi Charlie!");
-  notificationService.sendNotification("sms", "+5555555555", "Hi Charlie!");
-  notificationService.sendNotification("email", "dave@example.com", "Hi Dave!");
-  notificationService.sendNotification("sms", "+1111111111", "Hi Dave!");
-  notificationService.sendNotification("email", "eve@example.com", "Hi Eve!");
-  
