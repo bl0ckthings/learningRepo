@@ -1,123 +1,68 @@
+// type Side = "BUY" | "SELL";
+// type OrderStatus = "NEW" | "FILLED" | "CANCELED" | "REJECTED";
 
-// OOP scenario
+// class Order {
+//   constructor(
+//     private readonly id: string,
+//     private readonly symbol: string,
+//     private readonly side: Side,
+//     private readonly qty: number,
+//     private readonly price: number,
+//     private status: OrderStatus = "NEW"
+//   ) {}
+//   getId() { return this.id; }
+//   getSymbol() { return this.symbol; }
+//   getSide() { return this.side; }
+//   getQty() { return this.qty; }
+//   getPrice() { return this.price; }
+//   getStatus() { return this.status; }
+//   protected setStatus(s: OrderStatus) { this.status = s; }
+// }
 
-class Order {
-    constructor(
-        private readonly id: string,
-        private status: 'NEW'| 'FILLED'| 'CANCELED' = "NEW"
-    ) {}
+// class Portfolio {
+//   constructor(private _balance: number) {}
+//   get balance() { return this._balance; }
+//   deposit(amount: number): void { /* stub */ }
+//   withdraw(amount: number): void { /* stub */ }
+// }
 
-    getId() { return this.id}
-    getStatus() {return this.status}
-    protected setStatus(s:'NEW'| 'FILLED'| 'CANCELED' ) {
-        this.status = s
-    }
+// interface IExchange {
+//   placeOrder(order: Order): Promise<string>;
+//   cancelOrder(orderId: string): Promise<void>;
+//   getBalance(): Promise<number>;
+// }
 
-}
+// interface IStrategy {
+//   onStart(): void;
+//   onTick(): void;
+//   onStop(): void;
+// }
 
-class Portfolio  {
-    constructor(
-        private  _balance:number,
-    ) {}
-    get balance() {
-         return this._balance
-    }
-    deposit(amount:number) :void{}
-    withdraw(amount: number): void{} 
+// abstract class BaseBot {
+//   start() { this.onStart(); }
+//   stop() { this.onStop(); }
+//   protected abstract onStart(): void;
+//   protected abstract onStop(): void;
+// }
 
-}
+// // Polymorphism via strategies
+// class MeanReversionStrategy implements IStrategy {
+//   onStart() { console.log("MR start"); }
+//   onTick()  { console.log("MR tick"); }
+//   onStop()  { console.log("MR stop"); }
+// }
 
+// // Exchanges (not portfolios)
+// class BinanceExchange implements IExchange {
+//   constructor(private spotBalance: number) {}
+//   async placeOrder(order: Order): Promise<string> { return "order-id"; }
+//   async cancelOrder(orderId: string): Promise<void> {}
+//   async getBalance(): Promise<number> { return this.spotBalance; }
+// }
 
-class BinancePortfolio extends Portfolio {
-
-    constructor(
-        public binanceSpotBalance:number
-    ) {
-        super(binanceSpotBalance)
-    } 
-
-    getBinanceBalance(amount: number) {
-        return this.binanceSpotBalance
-    }
-
-    deposit(amount: number): void {
-    
-    }
-    withdraw(amount: number): void {
-        
-    }
-    
-}
-
-class MEXC extends Portfolio {
-
-    constructor(
-        public mexcSpotBalance:number
-    ) {
-        super(mexcSpotBalance)
-    } 
-
-    getMEXCBalance(amount: number) {
-        return this.mexcSpotBalance
-    }
-
-    deposit(amount: number): void {
-    
-    }
-    withdraw(amount: number): void {
-        
-    }
-    
-}
-
-
-
-interface IExchange {
-    placeStart()
-    cancelorder()
-    getBalance() 
-}
-interface IStrategy {
-    onStart()
-    onTick()
-    onStop()
-}
-const runtime: boolean= false
-
-
-abstract class BaseBot  {
-    start() {
-        this.onStart()
-
-    }
-    stop() {
-        this.onStop();
-    }
-
-    protected abstract onStart(): void
-    protected abstract onStop(): void
-
-}
-
-
-class MeanReversionStrategy implements IStrategy {
-    onStart ()  {
-        if (!runtime) {
-            return;
-        }
-        console.log(Date.now())
-    }
-    onTick() {
-        if (!runtime) {
-            return;
-        }
-        console.log("FETCHING NEW MEV MOVE...")
-    }
-    onStop() {
-        if (!runtime) {
-            return;
-        }
-        console.log('Shuting down the bot...')
-    }
-}  
-
+// class MexcExchange implements IExchange {
+//   constructor(private spotBalance: number) {}
+//   async placeOrder(order: Order): Promise<string> { return "order-id"; }
+//   async cancelOrder(orderId: string): Promise<void> {}
+//   async getBalance(): Promise<number> { return this.spotBalance; }
+// }
